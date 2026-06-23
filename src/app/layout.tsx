@@ -20,20 +20,20 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: {
     default: "Gabriele Battistata - Portfolio",
-    template: "%s | Portfolio Sviluppatore Fullstack",
+    template: "%s | Fullstack Developer Portfolio",
   },
   description:
-    "Sviluppatore fullstack da Torino con 5+ anni di esperienza. Sviluppo applicazioni web moderne, condivido conoscenze e creo modelli 3D.",
+    "Fullstack developer from Turin with 5+ years of experience. I build modern web applications, share knowledge, and create 3D models.",
   keywords: [
-    "sviluppatore fullstack",
-    "Torino",
-    "Italia",
-    "sviluppo web",
+    "fullstack developer",
+    "Turin",
+    "Italy",
+    "web development",
     "React",
     "Next.js",
-    "modellazione 3D",
+    "3D modeling",
     "portfolio",
-    "stampa 3D",
+    "3D printing",
   ],
   authors: [{ name: "Gabriele Battistata" }],
   icons: "/favicon.svg",
@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="it"
+      lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-dvh flex flex-col bg-surface text-on-surface antialiased">

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { ProfileGallery } from "@/components/ui/ProfileGallery";
 import { getTechIcon } from "@/lib/tech-icons";
-import { profile, projects, blogPosts } from "@/lib/content";
+import { profile, projects } from "@/lib/content";
 
 export default function Home() {
   return (
@@ -55,7 +55,7 @@ export default function Home() {
                     <rect x="1" y="3" width="14" height="10" rx="2" />
                     <path d="M1 4l7 5 7-5" />
                   </svg>
-                  Contattami
+                  Contact Me
                 </Button>
                 <a
                   href={profile.social.github}
@@ -87,7 +87,7 @@ export default function Home() {
                   >
                     <path d="M2 4l6 4 6-4M2 8l6 4 6-4" />
                   </svg>
-                  I Miei Progetti
+                  My Projects
                 </Button>
               </div>
             </div>
@@ -108,17 +108,17 @@ export default function Home() {
       </Section>
 
       {/* ─── Bio ─── */}
-      <Section title="About Me" subtitle="Un po' del mio percorso.">
+      <Section title="About Me" subtitle="A bit about my journey.">
         {/* Quick Stats Row */}
         <FadeIn>
           <div className="mb-10 grid grid-cols-3 gap-4">
             <Card className="text-center">
               <p className="text-2xl font-bold text-primary">{profile.yearsOfExperience.replace("+", "")}<span className="text-on-surface">+</span></p>
-              <p className="mt-1 text-sm text-on-surface-variant">Anni di Esperienza</p>
+              <p className="mt-1 text-sm text-on-surface-variant">Years of Experience</p>
             </Card>
             <Card className="text-center">
               <svg className="mx-auto mb-2 h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" /></svg>
-              <p className="text-sm text-on-surface-variant">Applicazioni<br />Enterprise</p>
+              <p className="text-sm text-on-surface-variant">Enterprise<br />Applications</p>
             </Card>
             <Card className="text-center">
               <svg className="mx-auto mb-2 h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" /></svg>
@@ -147,8 +147,8 @@ export default function Home() {
 
       {/* ─── Skills ─── */}
       <Section
-        title="Skills e Strumenti"
-        subtitle="Tecnologie con cui lavoro ogni giorno."
+        title="Skills & Tools"
+        subtitle="Technologies I work with every day."
       >
         <div className="flex flex-wrap justify-center gap-6">
           {Object.entries(profile.skills).map(([category, items], i) => (
@@ -190,8 +190,8 @@ export default function Home() {
 
       {/* ─── Experience ─── */}
       <Section
-        title="Esperienza"
-        subtitle="Posti in cui ho lavorato e cose che ho costruito."
+        title="Experience"
+        subtitle="Places I've worked and things I've built."
       >
         <div className="space-y-6">
           {profile.experience.map((exp, i) => (
@@ -206,9 +206,28 @@ export default function Home() {
                   </div>
                   <Chip>{exp.period}</Chip>
                 </div>
-                <p className="mt-3 text-on-surface-variant">
-                  {exp.description}
-                </p>
+                <div className="mt-4 space-y-4">
+                  {exp.projects.map((project, pIdx) => (
+                    <div key={pIdx}>
+                      {"title" in project && project.title && (
+                        <h4 className="mb-2 text-sm font-semibold text-on-surface">
+                          {project.title}
+                        </h4>
+                      )}
+                      <ul className="space-y-3">
+                        {project.items.map((item, iIdx) => (
+                          <li
+                            key={iIdx}
+                            className="flex gap-3 text-sm leading-relaxed text-on-surface-variant"
+                          >
+                            <span className="mt-[5px] size-2 shrink-0 rounded-full bg-primary/60" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </Card>
             </FadeIn>
           ))}
@@ -217,8 +236,8 @@ export default function Home() {
 
       {/* ─── Featured Projects ─── */}
       <Section
-        title="Progetti in Vetrina"
-        subtitle="Lavori selezionati dal mio portfolio."
+        title="Featured Projects"
+        subtitle="Selected work from my portfolio."
       >
         <div className="grid gap-6 md:grid-cols-2">
           {projects.slice(0, 4).map((project, i) => (
@@ -258,54 +277,16 @@ export default function Home() {
         </div>
         <FadeIn delay={320}>
           <div className="mt-8 text-center">
-            <Button href="/projects">Vedi Tutti i Progetti &rarr;</Button>
+            <Button href="/projects">View All Projects &rarr;</Button>
           </div>
         </FadeIn>
       </Section>
 
-      {/* ─── Recent Blog Posts ─── */}
-      <Section
-        title="Ultimi dal Blog"
-        subtitle="Riflessioni su sviluppo, design e creazione."
-      >
-        <div className="grid gap-6 md:grid-cols-2">
-          {blogPosts.slice(0, 2).map((post, i) => (
-            <FadeIn key={post.slug} delay={i * 100}>
-              <Card hover>
-                <div className="mb-3 flex items-center gap-3 text-sm text-on-surface-variant">
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString("it-IT", {
-                      month: "long",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </time>
-                  <span>&middot;</span>
-                  <span>{post.readingTime}</span>
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-on-surface">
-                  {post.title}
-                </h3>
-                <p className="mb-4 text-on-surface-variant">{post.excerpt}</p>
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <Chip key={tag}>{tag}</Chip>
-                  ))}
-                </div>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-        <FadeIn delay={200}>
-          <div className="mt-8 text-center">
-            <Button href="/blog">Leggi Tutti gli Articoli &rarr;</Button>
-          </div>
-        </FadeIn>
-      </Section>
+
 
       {/* ─── Education ─── */}
       <Section
-        title="Formazione"
+        title="Education"
         className="pb-24 md:pb-32"
       >
         <div className="grid gap-6 sm:grid-cols-2">

@@ -6,9 +6,9 @@ import { StlCardViewer } from "@/components/models/StlCardViewer";
 import { models3d } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Modelli 3D",
+  title: "3D Models",
   description:
-    "Una galleria di modelli 3D che ho progettato — dalle stampe funzionali ai pezzi artistici.",
+    "A gallery of 3D models I've designed — from functional prints to artistic pieces.",
 };
 
 export default function ModelsPage() {
@@ -17,8 +17,8 @@ export default function ModelsPage() {
 
   return (
     <Section
-      title="Modelli 3D"
-      subtitle="Cose che ho progettato e stampato. Clicca un modello per i dettagli."
+      title="3D Models"
+      subtitle="Things I've designed and printed. Click a model for details."
     >
       {categories.map((category) => (
         <div key={category} className="mb-12 last:mb-0">
@@ -55,7 +55,7 @@ export default function ModelsPage() {
                           href={model.stlUrl}
                           download
                           className="neo-button inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-[11px] font-medium"
-                          aria-label={`Scarica file STL di ${model.title}`}
+                          aria-label={`Download STL file for ${model.title}`}
                         >
                           <svg
                             width="14"

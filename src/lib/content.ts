@@ -1,15 +1,14 @@
 // ─── Profile ───
 export const profile = {
   name: "Gabriele Battistata",
-  role: "Sviluppatore Fullstack",
-  location: "Torino, Italia",
-  yearsOfExperience: "5+ anni",
+  role: "Fullstack Developer",
+  location: "Turin, Italy",
+  yearsOfExperience: "5+ years",
   tagline:
-    // "I build elegant digital experiences from database to interface — and I 3D print the prototypes.",
-    "Sviluppo applicazioni web e piattaforme enterprise che digitalizzano processi complessi, integrano dati critici e supportano operazioni su larga scala — ma non solo.",
+    "I build web applications and enterprise platforms that digitize complex processes, integrate critical data, and support large-scale operations — but that's not all.",
   bio: [
-    "Fuori dal lavoro mi dedico soprattutto a modellazione e stampa 3D, alla fotografia, sia digitale che analogica. Appena posso, mi piace anche andare in moto. In generale mi interessa capire come funzionano le cose e costruirle, che si tratti di software o di progetti più pratici.",
-    "Nel tempo libero mi piace programmare piccoli strumenti e progetti personali, soprattutto quando l’idea mi incuriosisce o il processo di realizzazione è divertente. A volte sono utili, altre volte esistono semplicemente perché mi andava di farli."
+    "Outside of work, I spend my time on 3D modeling and printing, photography (both digital and analog), and riding my motorcycle whenever I can. I'm naturally curious about how things work and enjoy building them, whether it's software or more hands-on projects.",
+    "In my free time, I like coding small tools and personal projects — especially when the idea sparks my curiosity or the process of building it is enjoyable. Sometimes they're useful, other times they exist simply because I felt like making them."
   ],
   email: "Gabrielebattistata@gmail.com",
   social: {
@@ -28,18 +27,18 @@ export const profile = {
       "Tailwind CSS",
     ],
     Backend: [".NET Core 7+", "Node.js", "Express", "C#", "Nest.js", "Go"],
-    "Test e QA": [
+    "Testing & QA": [
       "Playwright",
       "E2E Testing",
     ],
-    "DevOps e Strumenti": [
+    "DevOps & Tools": [
       "Docker",
       "Git",
       "CI/CD",
       "Linux",
       "CUPS",
     ],
-    "Creative": [
+    Creative: [
       "FreeCAD",
       "Fusion 360",
       "Davinci Resolve",
@@ -47,24 +46,45 @@ export const profile = {
   },
   experience: [
     {
-      role: "Sviluppatore Full Stack",
+      role: "Full Stack Developer",
       company: "Present S.p.a",
-      period: "2021 — Presente",
-      description:
-        "Sviluppo una PWA critica per il gruppo Stellantis (Angular + .NET Core 7) che consente alle officine autorizzate di tutto il mondo di tracciare gli interventi sui veicoli, creare controlli qualità offline ed esaminare le anomalie identificate. Ho realizzato dashboard analitiche per l'analisi dei log delle API di diagnostica veicolare. Ho migrato uno scheduler flat-file da COBOL a Node.js per la gestione dell'inventario degli stabilimenti FIAT in tutta Europa.",
+      period: "2021 — Present",
+      projects: [
+        {
+          title: "Stellantis Dealership PWA",
+          items: [
+            "Developed a mission-critical PWA (Angular + .NET Core 7) for authorized Stellantis group dealerships worldwide",
+            "Vehicle intervention tracking with offline quality check creation and anomaly management",
+            "Real-time dashboards for vehicle diagnostic API log analysis",
+          ],
+        },
+        {
+          title: "FIAT Inventory Scheduler",
+          items: [
+            "Built analytical dashboards for vehicle diagnostic API log analysis",
+            "Migrated a flat-file scheduler from COBOL to Node.js for FIAT plant inventory management across Europe",
+          ],
+        },
+      ],
     },
     {
-      role: "Working Student — Sviluppatore Junior Full Stack",
+      role: "Working Student — Junior Full Stack Developer",
       company: "Present S.p.a",
       period: "2020 — 2021",
-      description:
-        "Ho sviluppato una PWA con jQuery e Handlebars che sfrutta le API CUPS per la personalizzazione delle impostazioni di stampa e la gestione delle code. Ho studiato autonomamente Vue.js 3 per realizzare una soluzione di gestione delle code di stampa 3D per l'ufficio.",
+      projects: [
+        {
+          items: [
+            "Developed a PWA with jQuery and Handlebars leveraging CUPS APIs for print settings customization and queue management",
+            "Self-taught Vue.js 3 to build a 3D print queue management solution for the office",
+          ],
+        },
+      ],
     },
   ],
   education: [
     {
-      degree: "Tecnico Superiore Integratore di Sistemi Backend",
-      school: "Fondazione ITS ICT per le Tecnologie dell'Informazione e della Comunicazione",
+      degree: "Higher Technician in Backend Systems Integration",
+      school: "ITS ICT Foundation for Information and Communication Technologies",
       period: "2019 — 2021",
     },
   ],
@@ -75,7 +95,7 @@ export interface Project {
   slug: string;
   title: string;
   description: string;
-  longDescription: string;
+  details: string[];
   tags: string[];
   image?: string;
   links: {
@@ -92,8 +112,13 @@ export const projects: Project[] = [
     title: "clientScraper",
     image: "images/projectsImg/ClientScraper.png",
     description:
-      "Strumento automatizzato di lead generation che individua attività locali senza un sito web adeguato e le assegna una priorità per attività di outbound sales.",
-    longDescription:"clientScraper automatizza la ricerca di attività su Google Maps per città e categorie configurabili, estraendo lead e verificando la loro presenza online. Si basa su due fasi: prima raccoglie i dati visibili delle schede con Playwright, poi arricchisce i lead con telefono e sito tramite Google Places API. Un Lead Priority Score proprietario li segmenta in fasce come Ghost, Solo Facebook, Feature Gap e Sito Solido, così l’agenzia sa subito chi contattare prima. I risultati vengono esportati in CSV e consultati in una dashboard HTML autosufficiente con filtri, ordinamento, azioni rapide e tracciamento dei contatti con persistenza locale.",
+      "Automated lead generation tool that identifies local businesses without a proper website and prioritizes them for outbound sales activities.",
+    details: [
+      "Automated Google Maps search by city and configurable categories, extracting leads and verifying their online presence",
+      "Two-phase enrichment: visible data collection with Playwright and phone/website integration via Google Places API",
+      "Proprietary Lead Priority Score that segments leads into tiers (Ghost, Facebook Only, Feature Gap, Solid Site)",
+      "CSV export and self-contained HTML dashboard with filtering, sorting, quick actions, and contact tracking with local persistence",
+    ],
     tags: [
       "playwright",
       "python",
@@ -110,10 +135,16 @@ export const projects: Project[] = [
   },
   {
     slug: "esp32-weather-station",
-    title: "Weather Display per M5Stack",
+    title: "Weather Display for M5Stack",
     image: "images/projectsImg/WeatherM5Atom.webp",
-    description: "Progetto per M5Stack che si collega al Wi-Fi, recupera informazioni meteo da un endpoint remoto e visualizza diverse animazioni LED in base alle condizioni atmosferiche.",
-    longDescription: "Questo script per M5Stack utilizza la matrice LED integrata per mostrare animazioni meteo in tempo reale. Dopo aver tentato la connessione a una rete Wi-Fi, il dispositivo interroga periodicamente un endpoint HTTP che restituisce un codice meteo. In base al valore ricevuto, viene eseguita una specifica animazione visiva sulla matrice: sole, nuvoloso, pioggia leggera o pioggia intensa. Il codice include una logica di fallback per la connessione a una seconda rete Wi-Fi e, in caso di errore durante il recupero dei dati, effettua il riavvio del dispositivo. Le animazioni sono costruite manualmente tramite sequenze di frame RGB, così da trasformare il dispositivo in un piccolo display meteo autonomo.",
+    description: "M5Stack project that connects to Wi-Fi, fetches weather data from a remote endpoint, and displays different LED animations based on atmospheric conditions.",
+    details: [
+      "Automatic Wi-Fi connection with fallback to a secondary network in case of failure",
+      "Periodic HTTP endpoint polling to retrieve the current weather code",
+      "Custom LED animations for each condition: sunny, cloudy, light rain, and heavy rain",
+      "Automatic reboot logic on connection errors to ensure display reliability",
+      "Manually crafted animations using RGB frame sequences on the built-in LED matrix",
+    ],
     tags: [
       "m5stack",
       "micropython",
@@ -128,56 +159,6 @@ export const projects: Project[] = [
     },
     year: "2023"
   }
-];
-
-// ─── Blog Posts ───
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  tags: string[];
-  readingTime: string;
-  content?: string;
-}
-
-export const blogPosts: BlogPost[] = [
-  {
-    slug: "building-neumorphic-design-systems",
-    title: "Costruire Sistemi di Design Neumorfici nel 2025",
-    excerpt:
-      "Una guida pratica all'implementazione della soft UI con CSS moderno — niente design tokens, niente drammi.",
-    date: "2025-05-12",
-    tags: ["CSS", "Design", "Tutorial"],
-    readingTime: "8 min di lettura",
-  },
-  {
-    slug: "fullstack-typescript-best-practices",
-    title: "TypeScript Fullstack: Pattern che Scalano",
-    excerpt:
-      "Lezioni da 5 anni di monorepo TypeScript — cosa funziona, cosa no, e perché il noioso è meglio.",
-    date: "2025-04-28",
-    tags: ["TypeScript", "Architettura", "Best Practice"],
-    readingTime: "12 min di lettura",
-  },
-  {
-    slug: "3d-printing-for-developers",
-    title: "Stampa 3D per Sviluppatori: Dal Codice all'Oggetto",
-    excerpt:
-      "Come uso la modellazione parametrica e la generazione procedurale per creare design stampabili in 3D.",
-    date: "2025-03-15",
-    tags: ["Stampa 3D", "Blender", "Creative Coding"],
-    readingTime: "10 min di lettura",
-  },
-  {
-    slug: "optimizing-nextjs-performance",
-    title: "Ottimizzare Next.js per la Produzione: Checklist",
-    excerpt:
-      "Le ottimizzazioni esatte che eseguo su ogni progetto Next.js prima del deploy — dai font alle immagini al runtime.",
-    date: "2025-02-20",
-    tags: ["Next.js", "Performance", "Tutorial"],
-    readingTime: "7 min di lettura",
-  },
 ];
 
 // ─── 3D Models ───
@@ -198,45 +179,25 @@ export interface Model3D {
 export const models3d: Model3D[] = [
   {
     id: "coffe-dispenser",
-    title: "Dispenser Caffè",
+    title: "Coffee Capsule Dispenser",
     description:
-      "Un dispender di cialde piatte singolarmente incartate, per un consumatore di caffè, da un consumatore di caffè",
-    category: "Arredamento",
+      "A dispenser for individually wrapped flat coffee pods — by a coffee consumer, for a coffee consumer.",
+    category: "Office",
     tags: ["Fusion 360", "PLA"],
-    "dimensions": "150mm x 150mm x 200mm",
-    printTime: "14 ore",
-    filament: "PLA Silk Rame",
     date: "2025-05-01",
     stlUrl: "/3D/Dispenser-Caffe.stl",
+  },
+  {
+    id: "burago-skadis-display",
+    title: "1/18 Burago Model Display",
+    description:
+      "Skadis (Pegboard) mount for displaying 1/18 scale Burago model cars.",
+    category: "Model Making",
+    tags: ["Fusion 360", "PLA"],
+    date: "2025-05-01",
+    stlUrl: "/3D/burago-skadis-display.stl",
   },
   
 ];
 
-// ─── Hobbies ───
-export interface Hobby {
-  slug: string;
-  title: string;
-  description: string;
-  icon: string;
-  color: string;
-  content?: string;
-}
 
-export const hobbies: Hobby[] = [
-  {
-    slug: "3d-modeling",
-    title: "Modellazione e Stampa 3D",
-    description:
-      "Progetto oggetti funzionali e decorativi usando Fusion 360, Blender e varie tecniche di stampa 3D. Dai meccanismi a scatto all'arredamento parametrico.",
-    icon: "Cube",
-    color: "primary",
-  },
-  {
-    slug: "photography",
-    title: "Fotografia Analogica",
-    description:
-      "Fotografia analogica in medio formato e 35mm. Sviluppo e scansiono le mie pellicole, con focus su composizioni architettoniche e di paesaggio.",
-    icon: "Camera",
-    color: "secondary",
-  },
-];

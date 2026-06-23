@@ -7,15 +7,15 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Progetti",
-    description: "Una vetrina dei miei progetti di sviluppo web.",
+  title: "Projects",
+    description: "A showcase of my web development projects.",
 };
 
 export default function ProjectsPage() {
   return (
     <Section
-      title="Progetti"
-      subtitle="Una selezione curata di ciò che ho costruito."
+      title="Projects"
+      subtitle="A curated selection of what I've built."
     >
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project, i) => (
@@ -36,9 +36,20 @@ export default function ProjectsPage() {
               </h3>
               <Chip>{project.year}</Chip>
             </div>
-            <p className="mb-4 flex-1 text-on-surface-variant">
-              {project.longDescription}
+            <p className="mb-4 flex-1 text-sm text-on-surface-variant">
+              {project.description}
             </p>
+            <ul className="mb-6 space-y-3">
+              {project.details.map((item, iIdx) => (
+                <li
+                  key={iIdx}
+                  className="flex gap-3 text-sm leading-relaxed text-on-surface-variant"
+                >
+                  <span className="mt-[5px] size-2 shrink-0 rounded-full bg-primary/60" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
             <div className="mb-6 border-t border-outline-variant/30 pt-3">
               <div className="flex flex-wrap items-center gap-x-1.5 text-[11px] font-medium uppercase tracking-wider text-outline">
                 {project.tags.map((tag, tIdx) => (
@@ -52,7 +63,7 @@ export default function ProjectsPage() {
             <div className="mt-auto flex flex-wrap gap-3">
               {project.links.live && (
                 <Button variant="primary" href={project.links.live}>
-                  Sito Live &nearr;
+                  Live Site &nearr;
                 </Button>
               )}
               {project.links.github && (

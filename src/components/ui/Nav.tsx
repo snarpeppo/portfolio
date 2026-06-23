@@ -9,9 +9,7 @@ import { Logo3D } from "./Logo3D";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
   { href: "/models", label: "3D Models" },
-  { href: "/hobbies", label: "Hobbies" },
 ];
 
 export function Nav() {
